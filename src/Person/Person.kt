@@ -1,3 +1,5 @@
+package Person
+
 /**
  * Created by Альберт on 10.05.2017.
  */
@@ -39,6 +41,8 @@ class Person(val name: String): Comparable<Person> {
 
 
 }
+
+
 
 fun main(args: Array<String>){
     var lord = Person("Lord")
