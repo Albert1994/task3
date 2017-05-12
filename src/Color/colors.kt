@@ -13,6 +13,13 @@ fun getMnemonic(color: Color) =
             Color.VIOLET -> "Vain"
         }
 
+fun print_(){
+    var a = Color.values()
+    for(i in 0..6)
+        println(a[i])
+}
+
+
 fun mix(c1: Color, c2: Color) =
         when (setOf(c1, c2)) {
             setOf(Color.RED, Color.YELLOW) -> Color.ORANGE
@@ -37,4 +44,7 @@ fun main(args: Array<String>) {
     println(getMnemonic(Color.BLUE))
     println(mix(Color.YELLOW,Color.RED))
     println(mix_my(Color.YELLOW,Color.RED))
+  //  println(print_())
+    val string = Color.values().map { it.toString() + " " }
+
 }
