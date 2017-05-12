@@ -34,7 +34,19 @@ open class Person(val name: String): Comparable<Person> {
 
         return str
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (other === this) return true
+        if (other !is Person) return false
+        return other.age == age
+    }
+
+
 }
+
+data class database(val name: String,val age: Int, val isAdult: Boolean)
+
+
 
 class Teenager(name: String) : Person(name){
     var isTeenager = false
@@ -66,4 +78,7 @@ fun main(args: Array<String>){
     if(lord2.compareTo(lord3) == 1){
         println(lord2.name + " старше")
     }
+
+    if(lord2 > lord3)println("yes")
+    if(lord3 == lord3)println("yes")
 }
