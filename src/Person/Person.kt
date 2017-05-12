@@ -1,57 +1,69 @@
 package Person
 
-/**
- * Created by Альберт on 10.05.2017.
- */
+open class Person(val name: String): Comparable<Person> {
+    var age:Int = 0
+    var isAdult = false
 
+    constructor(name: String, age: Int) : this(name) {
+        if (age > 0) {
+            this.age = age
+            this.isAdult = this.age in 21..100
+        } else
+            println("Неправильный возраст")
+    }
 
-class Person(val name: String): Comparable<Person> {
     override fun compareTo(other: Person): Int {
         if(this.age > other.age) return 1
         else if (this.age < other.age) return  -1
         return 0
     }
 
-    var age:Int = 0
-    var isAdult = 0
-
-    constructor(name: String, age: Int) : this(name){
-        if(age > 0)
-        this.age = age
-        else
-        println("Не правильный возраст")
+    fun funage(other: Person) {
+        if(this.age > other.age) println(this.name + " старше")
+        else if (this.age < other.age) println(other.name + " старше")
+        else println(this.name + " и "+ other.name + " старше")
     }
 
-    fun print_Person():String{
+    override fun toString():String{
         var str = ""
         if(this.age != 0){
-            str = "Имя: " + this.name + "\nвозраст: " + this.age.toString() + "\n_____"
+            str = "Имя: " + this.name + "\nвозраст: " + this.age + "\nвзрослый?" + this.isAdult + "\n_____"
         }else{
             str = "Имя " + this.name
         }
 
         return str
     }
-    fun isAdult(): Boolean {
-        return this.age in 50..100
-    }
-    fun isAdult1(): Boolean {
-        return this.age > 18
-    }
-
-
 }
 
+class Teenager(name: String) : Person(name){
+    var isTeenager = false
 
+    constructor(name: String, age: Int) : this(name){
+        if(age > 0) {
+            this.age = age
+            this.isTeenager = this.age in 13..19
+        }else
+            println("Не правильный возраст")
+    }
+}
 
 fun main(args: Array<String>){
-    var lord = Person("Lord")
-    var lord2 = Person("Lord2", 50)
+    var lord = Person("Толик")
+    var lord2 = Person("Петя", 50)
+    var lord3 = Person("Антон", 45)
+    var lord4 = Person("Слава", 17)
+    var teenager = Teenager("Максим", 21)
+
+    println(teenager.isTeenager)
 
 
-    println(lord2.print_Person())
-    println(lord.print_Person())
-    println(lord2.isAdult())
-    println(lord2.isAdult1())
+    println(lord2.toString())
+    println(lord3.toString())
+    println(lord.toString())
 
+    lord4.funage(lord3)
+    if(lord2.compareTo(lord3) == 1){
+        println(lord2.name + " старше")
+    }
 }

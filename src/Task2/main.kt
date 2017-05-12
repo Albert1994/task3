@@ -18,13 +18,3 @@ fun  fu(d: String): String? {
         return d
     else return null
 }
-
-fun  f(d: String): String? {
-    var count = 0
-    for(s in d) {
-        count++
-    }
-    if(count > 3)
-        return d
-    else return null
-}
